@@ -4,6 +4,7 @@ import { MdArrowOutward } from "react-icons/md";
 import lawyerImg from "../Images/lawyer.png";
 import { useNavigate } from "react-router";
 import Chatbot from "./Chatbot"; // Import the Chatbot component
+import { SignInButton } from "@clerk/clerk-react";
 
 export default function Main() {
   const navigate = useNavigate();
@@ -17,9 +18,11 @@ export default function Main() {
     navigate("/login");
   }
 
+  const isSignedIn = false; // Assuming you'll get this value from somewhere
+
   return (
-    <div className="w-full flex justify-center items-center">
-      <div className="relative w-[1286px] flex">
+    <div className="relative w-[1286px] mx-auto flex justify-center items-center">
+      <div className="relative w-[10/11] flex">
         <div className="w-[50%] flex flex-col justify-center items-start bg-gray-200 px-7">
           <div className="px-4 space-y-6">
             <div className="text-4xl font-bold px-4">knowledge of your rights is your shield against injustice.<br/></div>
@@ -27,7 +30,7 @@ export default function Main() {
 
           </div>
           <div className="flex gap-x-4 mt-7 px-8">
-            <div className="hover:scale-110 hover:ml-0 hover:transition: duration-1000">
+            <div className="hover:scale-110 hover:ml-0 hover:transition-duration-1000">
               <Button className="rounded flex flex-row gap-2" onClick={handleClick1}>
                 <div>Try chatbot</div>{" "}
                 <div>
@@ -35,13 +38,10 @@ export default function Main() {
                 </div>
               </Button>
             </div>
-            <div className="w-4 h-4 hover:scale-110 hover:ml-0 hover:transition: duration-1000">
-              <Button className="rounded flex flex-row gap-2" onClick={handleClick2}>
-                <div>Log in</div>{" "}
-                <div>
-                  <MdArrowOutward className="hover:cursor-pointer" />
-                </div>
-              </Button>
+            <div className="w-4 h-4 hover:scale-110 hover:ml-0 hover:transition-duration-1000">
+              {
+                isSignedIn ? <SignInButton>Log in</SignInButton> : null
+              }
             </div>
           </div>
         </div>

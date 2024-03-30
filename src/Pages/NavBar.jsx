@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom";
-import Login from "../components/Login";
+import { SignInButton, UserButton, useUser } from "@clerk/clerk-react";
 import { FaGraduationCap } from "react-icons/fa6";
 
 export default function NavBar() {
+  const {isSignedIn}=useUser();
   return (
     <div className="container w-[1286px] mx-auto px-4 flex items-center justify-between py-2">
       {/* Logo */}
@@ -17,23 +18,23 @@ export default function NavBar() {
             <NavLink to={"/"}>Home</NavLink>
           </li>
           <li>
-            <NavLink to={"/profile"}>Profile</NavLink>
+            <NavLink to={"/advocate"}>Advocate</NavLink>
           </li>
           <li>
-            <NavLink to={"/contact"}>Contact</NavLink>
+            <NavLink to={"/aboutus"}>Aboutus</NavLink>
           </li>
           <li>
             <NavLink to={"/feedback"}>FeedBack</NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to={"/team1"}>Team</NavLink>
-          </li>
+          </li> */}
         </ul>
       </nav>
 
       {/* Login Button */}
       <div>
-        <Login />
+     { isSignedIn === false ? <SignInButton>Log in</SignInButton> :<UserButton/>}
       </div>
     </div>
   );
