@@ -15,30 +15,32 @@ import lawyerImg from "../Images/lawyer.png"
 // import Main  from '../components/Main';
 import Main from '../components/Main.jsx';
 import Features from '../components/Feature.jsx';
-import Contact from './Contact.jsx'
-import Feedback_Feature from '../components/Feedback_Feature.jsx';
+// import Contact from './Contact.jsx'
 import Footer from '../components/Footer.jsx'
+
+import Feedback_Feature from '../components/Feedback_Feature.jsx';
+import Chatbot from '../components/Chatbot.jsx';
 
 // import Login from "./Login";
 
 function Home() {
  
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  function handleClick(){
-      navigate("/login");
-  }
+  // function handleClick(){
+  //     navigate("/login");
+  // }
 
   return (
     <div className='w-full justify-center items-center'>
-      <Main/>
+      <Main/> 
       <Features/>
-     {/* <Chatbot /> */}
+      {/* <Chatbot /> */}
       <Feedback_Feature/>
-      <Contact/>
       <Fnq />
       <Footer/>
-        
+       {/* <Feedback_Feature /> */}
+       <Chatbot className="abs mr-2 mb-5"/>
 
     </div>
   

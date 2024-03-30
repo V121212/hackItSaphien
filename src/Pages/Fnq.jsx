@@ -1,59 +1,62 @@
 import { useState } from "react";
+import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 
-import { FaArrowDown } from "react-icons/fa6";
-import { FaArrowUp } from "react-icons/fa";
-
-// import './index.css'
 const Faq = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="ml-8 text-base font-general-sans font-normal  " >
-      <h3  onClick={() => setIsOpen(!isOpen)}> <p className="text-2xl mt-4"><div className="flex flex-row gap-2"> <div><FaArrowDown size={20} /></div> <div>{question}</div> </div></p></h3>
-      {isOpen && <p className="text-sm p-2"> <p className="flex flex-row gap-2"> {answer}</p> </p>}
+    <div className={`ml-8 text-base font-sans rounded-md py-4 w-full mb-4 ${isOpen ? 'bg-white text-black' : 'bg-black text-white'}`} style={{ padding: "10px" }}>
+      <h3 onClick={() => setIsOpen(!isOpen)} className="cursor-pointer text-2xl mt-2 mb-1 flex items-center">
+        <span className="mr-2">{isOpen ? <FaArrowUp size={20} /> : <FaArrowDown size={20} />}</span>
+        {question}
+      </h3>
+      {isOpen && (
+        <p className="text-sm bg-gray-100 p-4 rounded-md mt-1 mb-2">{answer}</p>
+      )}
     </div>
   );
 };
 
 const FaqList = ({ faqs }) => {
   return (
-    <div className="faq-list ">
+    <div className="faq-list py-4">
       {faqs.map((faq) => (
-        <Faq  key={faq.id} question={faq.question} answer={faq.answer} />
+        <Faq key={faq.id} question={faq.question} answer={faq.answer} />
       ))}
     </div>
-  );  
+  );
 };
 
 export default function Fnq() {
   const faqs = [
     {
       id: 1,
-      question: "Why to use online LawerConsultancy?",
-      answer: "Online consultancy platforms for legal advice offer convenient, accessible, and cost-effective access to legal professionals. They enable users to schedule consultations from anywhere, saving time and eliminating the need for travel. With a wide range of legal services available, users can find specialized expertise tailored to their needs.",
+      question: "Why use online Lawer Consultancy?",
+      answer: "Online consultancy platforms offer convenient access to legal professionals, saving time and eliminating travel needs. Users can find specialized expertise tailored to their needs.",
     },
     {
       id: 2,
-      question: "Are the lawers we are hiring are qualified?",
-      answer: " Your online legal consultancy platform verifies lawyers' qualifications, registrations, and certifications manually They enable users to schedule consultations from anywhere, saving time and eliminating the need for travel. These platforms offer fast response times and flexible communication methods, making legal advice more accessible to a broader audience."
+      question: "Are the lawyers qualified?",
+      answer: "Our platform verifies lawyers' qualifications, registrations, and certifications manually. Fast response times and flexible communication methods make legal advice accessible.",
     },
     {
       id: 3,
-      question: "What should I do if I don't receive a reply from a lawyer?",
-      answer: "If you haven't received a response from a lawyer, you may need to follow up with them by sending another message or trying to contact them through alternative means such as phone or email. If you still don't get a response, you may consider reaching out to the platform's customer support for assistance or exploring other options for legal consultation."
+      question: "What if I don't receive a reply from a lawyer?",
+      answer: "If you don't receive a response, follow up with them or contact customer support for assistance. Privacy and confidentiality are ensured during consultations.",
     },
     {
       id: 4,
-      question: "Is online Lawer Consultancy safe and secured?",
-      answer: "Your privacy is our priority. We adhere to industry standards for privacy and confidentiality, ensuring that your online consultations with lawyers are completely secure. Your information is protected using advanced 256-bit encryption, offering you peace of mind during your legal discussions."
+      question: "Is online Lawer Consultancy safe and secure?",
+      answer: "Privacy is our priority. We adhere to industry standards, ensuring secure consultations with advanced encryption.",
     }
   ];
 
   return (
-    <div  className=" min-h-screen app cursor-pointer flex flex-col gap-8 bg-slate-200 pt-20 ">
-      <h1 className="  ml-20 justify-center text-uppercase font-general-sans-medium font-semibold text-center text-2xl" >Frequently Asked Questions</h1>
-      <FaqList faqs={faqs}  />
+    <div className="min-h-[500px] bg-gray-200 flex flex-col items-center justify-center">
+      <h1 className="text-center text-3xl font-semibold my-6">Frequently Asked Questions</h1>
+      <div className="w-[70%] mx-auto space-y-6">
+        <FaqList faqs={faqs} />
+      </div>
     </div>
   );
 };
-

@@ -5,19 +5,18 @@ import Feedback from "./Pages/Feedback";
 import Home from "./Pages/Home";
 import Team1 from "./Pages/Team1.jsx";
 import Login from "./components/Login.jsx";
-// import Chatbot from "../../chatbot/Chatbot.jsx";
+import Chatbot from "./components/Chatbot.jsx";
 import NavBar from "./Pages/NavBar.jsx";
 
 function App() {
   const location = useLocation();
 
-  // Check if the current path is '/chatbot'
-  const isChatbotPath = location.pathname === "/chatbot";
+
 
   return (
     <div className="w-[100%]">
       {/* Conditionally render the Navbar based on the path */}
-      {!isChatbotPath && <NavBar />}
+      <NavBar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
@@ -25,7 +24,6 @@ function App() {
         <Route path="/feedback" element={<Feedback />} />
         <Route path="/team1" element={<Team1 />} />
         <Route path="/login" element={<Login />} />
-        {/* <Route path="/chatbot" element={<Chatbot />} /> */}
         <Route path="*" element={<div>404 PageNotFound</div>} />
       </Routes>
     </div>

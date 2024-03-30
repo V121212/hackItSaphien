@@ -3,7 +3,7 @@ import Box1 from '../../src/components/Shadcn/Box1'; // Assuming Box1 is a compo
 
 const Feature = () => {
   return (
-    <div className="w-[1286px] flex flex-col gap-2 mt-20 mx-auto">
+    <div className="w-[1286px] flex flex-col gap-8 mt-20 mx-auto">
       <div className="font-bold text-5xl ml-14">Features</div>
       <div className="flex flex-row gap-16 mt-2 ml-12 mr-12 font font-light text-s">
         <Box1
